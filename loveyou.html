@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Teddy Day, X! 🧸💕</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #ffeef8 0%, #ffe0f0 50%, #ffd4e5 100%);
+            min-height: 100vh;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* Floating hearts animation */
+        .heart-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .heart {
+            position: absolute;
+            font-size: 20px;
+            animation: float 8s infinite;
+            opacity: 0.6;
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(100vh) rotate(0deg);
+                opacity: 0;
+            }
+            10% {
+                opacity: 0.6;
+            }
+            90% {
+                opacity: 0.6;
+            }
+            100% {
+                transform: translateY(-100px) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 40px 20px;
+            position: relative;
+            z-index: 2;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 50px;
+            animation: fadeInDown 1s ease;
+        }
+
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        h1 {
+            font-size: 3.5em;
+            color: #ff1493;
+            text-shadow: 3px 3px 6px rgba(255, 20, 147, 0.3);
+            margin-bottom: 10px;
+            font-weight: 800;
+        }
+
+        .subtitle {
+            font-size: 1.8em;
+            color: #ff69b4;
+            font-weight: 600;
+            margin-bottom: 20px;
+        }
+
+        .teddy-emoji {
+            font-size: 4em;
+            display: inline-block;
+            animation: bounce 2s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-20px);
+            }
+        }
+
+        .main-card {
+            background: white;
+            border-radius: 30px;
+            padding: 50px;
+            box-shadow: 0 20px 60px rgba(255, 20, 147, 0.2);
+            margin-bottom: 40px;
+            animation: fadeInUp 1s ease 0.3s both;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .message {
+            font-size: 1.3em;
+            color: #555;
+            line-height: 1.8;
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .gift-section {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .gift-card {
+            background: linear-gradient(135deg, #fff 0%, #ffe0f0 100%);
+            border-radius: 20px;
+            padding: 30px;
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border: 3px solid #ffb6d9;
+            animation: fadeInUp 1s ease 0.6s both;
+        }
+
+        .gift-card:hover {
+            transform: translateY(-10px) scale(1.05);
+            box-shadow: 0 15px 40px rgba(255, 20, 147, 0.3);
+        }
+
+        .gift-icon {
+            font-size: 5em;
+            margin-bottom: 15px;
+            display: inline-block;
+            animation: wiggle 3s infinite;
+        }
+
+        @keyframes wiggle {
+            0%, 100% {
+                transform: rotate(0deg);
+            }
+            25% {
+                transform: rotate(-10deg);
+            }
+            75% {
+                transform: rotate(10deg);
+            }
+        }
+
+        .gift-title {
+            font-size: 1.8em;
+            color: #ff1493;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .gift-description {
+            font-size: 1.1em;
+            color: #666;
+            line-height: 1.6;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: linear-gradient(135deg, #ff1493 0%, #ff69b4 100%);
+            color: white;
+            padding: 20px 50px;
+            border-radius: 50px;
+            font-size: 1.4em;
+            font-weight: bold;
+            text-decoration: none;
+            margin-top: 30px;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 30px rgba(255, 20, 147, 0.4);
+            border: none;
+            cursor: pointer;
+        }
+
+        .cta-button:hover {
+            transform: scale(1.1);
+            box-shadow: 0 15px 40px rgba(255, 20, 147, 0.6);
+        }
+
+        .love-note {
+            background: linear-gradient(135deg, #ffe0f0 0%, #ffb6d9 100%);
+            border-radius: 20px;
+            padding: 40px;
+            margin-top: 40px;
+            border-left: 5px solid #ff1493;
+            animation: fadeInUp 1s ease 0.9s both;
+        }
+
+        .love-note p {
+            font-size: 1.2em;
+            color: #555;
+            line-height: 1.8;
+            font-style: italic;
+            text-align: center;
+        }
+
+        .signature {
+            text-align: right;
+            font-size: 1.3em;
+            color: #ff1493;
+            font-weight: bold;
+            margin-top: 20px;
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 60px;
+            padding: 30px;
+            color: #ff69b4;
+            font-size: 1.1em;
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.5em;
+            }
+            .subtitle {
+                font-size: 1.3em;
+            }
+            .main-card {
+                padding: 30px 20px;
+            }
+            .gift-section {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="heart-container" id="heartContainer"></div>
+
+    <div class="container">
+        <header>
+            <div class="teddy-emoji">🧸</div>
+            <h1>Happy Teddy Day!</h1>
+            <p class="subtitle">For My Sweetheart, Anusha💕</p>
+        </header>
+
+        <div class="main-card">
+            <div class="message">
+                <p>On this special Teddy Day, I want you to know that you mean the world to me! 💖</p>
+                <p>Just like a teddy bear brings comfort and joy, you bring endless happiness to my life every single day.</p>
+            </div>
+
+            <div class="gift-section">
+                <div class="gift-card">
+                    <div class="gift-icon">🧸</div>
+                    <div class="gift-title">A Cuddly Teddy</div>
+                    <div class="gift-description">
+                        Soft, warm, and always there for you – just like my love! This teddy is a reminder of me always loving and being their fot you. 💕
+                    </div>
+                </div>
+
+                <div class="gift-card">
+                    <div class="gift-icon">🤗</div>
+                    <div class="gift-title">Unlimited Hugs</div>
+                    <div class="gift-description">
+                        online hugs today, real hugs forever! I'm sending you all the warmth and comfort through every hug. You deserve all the love and effort! 
+                    </div>
+                </div>
+            </div>
+
+            <div style="text-align: center;">
+                <button class="cta-button" onclick="showLove()">Click for a Special Surprise! 💝</button>
+            </div>
+        </div>
+
+        <div class="love-note">
+            <p>
+                "You're my favorite person to hug with, my darling, and my forever love. 
+                This teddy might be cute, but it's got nothing infront of you! Thank you for being the sweetest 
+                part of my life. I love you more than all the teddy bears in the world! 🧸💕"
+            </p>
+            <div class="signature">— Your adopted child 💖</div>
+        </div>
+
+        <footer>
+            <p>Happy Teddy Day 2026! 🧸💕✨</p>
+            <p>You + Me = Forever 💑</p>
+        </footer>
+    </div>
+
+    <script>
+        // Create floating hearts
+        function createHeart() {
+            const heartContainer = document.getElementById('heartContainer');
+            const heart = document.createElement('div');
+            heart.classList.add('heart');
+            heart.innerHTML = ['💕', '💖', '💗', '💝', '💓', '🧸'][Math.floor(Math.random() * 6)];
+            heart.style.left = Math.random() * 100 + '%';
+            heart.style.animationDuration = (Math.random() * 5 + 5) + 's';
+            heart.style.fontSize = (Math.random() * 20 + 15) + 'px';
+            heartContainer.appendChild(heart);
+
+            setTimeout(() => {
+                heart.remove();
+            }, 8000);
+        }
+
+        // Create hearts periodically
+        setInterval(createHeart, 500);
+
+        // Special surprise function
+        function showLove() {
+            const messages = [
+                "You're the teddy to my bear! 🧸💕",
+                "I'm very lucky to have you! 🐻❤️",
+                "You make my heart feel safe and warm! 💖",
+                "Sending you hugs and endless love! 🤗💕",
+                "You're the sweet girl i ever meet 🧸✨",
+                "I love you beary much! 💗🧸"
+            ];
+            
+            const randomMessage = messages[Math.floor(Math.random() * messages.length)];
+            
+            // Create surprise popup
+            const popup = document.createElement('div');
+            popup.style.cssText = `
+                position: fixed;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%) scale(0);
+                background: white;
+                padding: 50px;
+                border-radius: 30px;
+                box-shadow: 0 20px 60px rgba(255, 20, 147, 0.5);
+                z-index: 1000;
+                text-align: center;
+                animation: popIn 0.5s ease forwards;
+                max-width: 90%;
+            `;
+            
+            popup.innerHTML = `
+                <div style="font-size: 4em; margin-bottom: 20px;">🧸💕</div>
+                <div style="font-size: 1.8em; color: #ff1493; font-weight: bold; margin-bottom: 20px;">
+                    ${randomMessage}
+                </div>
+                <button onclick="this.parentElement.remove()" style="
+                    background: linear-gradient(135deg, #ff1493 0%, #ff69b4 100%);
+                    color: white;
+                    border: none;
+                    padding: 15px 40px;
+                    border-radius: 25px;
+                    font-size: 1.2em;
+                    cursor: pointer;
+                    font-weight: bold;
+                ">Close 💖</button>
+            `;
+            
+            document.body.appendChild(popup);
+            
+            // Add animation
+            const style = document.createElement('style');
+            style.textContent = `
+                @keyframes popIn {
+                    to {
+                        transform: translate(-50%, -50%) scale(1);
+                    }
+                }
+            `;
+            document.head.appendChild(style);
+        }
+
+        // Create initial hearts
+        for (let i = 0; i < 10; i++) {
+            setTimeout(createHeart, i * 200);
+        }
+    </script>
+</body>
+</html>
