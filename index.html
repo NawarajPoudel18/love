@@ -303,48 +303,6 @@
             transform: scale(1.3) rotate(20deg);
         }
 
-        @keyframes sway {
-            0%, 100% {
-                transform: rotate(-5deg);
-            }
-            50% {
-                transform: rotate(5deg);
-            }
-        }
-
-        @keyframes roseGrow {
-            0%, 100% {
-                filter: drop-shadow(0 0 10px rgba(255, 107, 157, 0.5));
-            }
-            50% {
-                filter: drop-shadow(0 0 20px rgba(255, 107, 157, 1));
-            }
-        }
-
-        .sparkle {
-            display: inline-block;
-            animation: sparkle 2s infinite, rotate 4s linear infinite;
-        }
-
-        @keyframes sparkle {
-            0%, 100% {
-                opacity: 1;
-                transform: scale(1);
-            }
-            50% {
-                opacity: 0.5;
-                transform: scale(1.2);
-            }
-        }
-
-        @keyframes rotate {
-            from {
-                transform: rotate(0deg);
-            }
-            to {
-                transform: rotate(360deg);
-            }
-        }
 
         /* Interactive button */
         .love-button {
@@ -391,10 +349,10 @@
     <div id="stars-container"></div>
 
     <div class="container">
-        <div class="main-heart" onclick="explodeHeart(this)">❤️</div>
+        <div class="main-heart">❤️</div>
         <h1>Happy Valentine's Day</h1>
         <div class="name">Anusha</div>
-        <div class="rose" onclick="showerRoses(this)">🌹</div>
+        <div class="rose">🌹</div>
 
         <div class="message">
             Though we've only met <span class="highlight">once</span>, 
@@ -523,86 +481,7 @@
         }
 
         // Heart explosion effect
-        function explodeHeart(element) {
-            for(let i = 0; i < 20; i++) {
-                setTimeout(() => {
-                    const miniHeart = document.createElement('div');
-                    miniHeart.innerHTML = '❤️';
-                    miniHeart.style.position = 'fixed';
-                    miniHeart.style.left = element.getBoundingClientRect().left + 'px';
-                    miniHeart.style.top = element.getBoundingClientRect().top + 'px';
-                    miniHeart.style.fontSize = '20px';
-                    miniHeart.style.pointerEvents = 'none';
-                    miniHeart.style.zIndex = '9999';
-                    
-                    document.body.appendChild(miniHeart);
-                    
-                    const angle = (Math.PI * 2 * i) / 20;
-                    const velocity = Math.random() * 150 + 100;
-                    const vx = Math.cos(angle) * velocity;
-                    const vy = Math.sin(angle) * velocity;
-                    
-                    let x = element.getBoundingClientRect().left;
-                    let y = element.getBoundingClientRect().top;
-                    let opacity = 1;
-                    
-                    const animate = () => {
-                        x += vx * 0.02;
-                        y += vy * 0.02;
-                        opacity -= 0.02;
-                        
-                        miniHeart.style.left = x + 'px';
-                        miniHeart.style.top = y + 'px';
-                        miniHeart.style.opacity = opacity;
-                        miniHeart.style.transform = `rotate(${opacity * 360}deg)`;
-                        
-                        if(opacity > 0) {
-                            requestAnimationFrame(animate);
-                        } else {
-                            miniHeart.remove();
-                        }
-                    };
-                    
-                    animate();
-                }, i * 20);
-            }
-        }
-
         // Rose shower effect
-        function showerRoses(element) {
-            for(let i = 0; i < 15; i++) {
-                setTimeout(() => {
-                    const rose = document.createElement('div');
-                    rose.innerHTML = '🌹';
-                    rose.style.position = 'fixed';
-                    rose.style.left = Math.random() * window.innerWidth + 'px';
-                    rose.style.top = '-50px';
-                    rose.style.fontSize = '30px';
-                    rose.style.pointerEvents = 'none';
-                    rose.style.zIndex = '9999';
-                    
-                    document.body.appendChild(rose);
-                    
-                    let y = -50;
-                    let rotation = 0;
-                    const fallSpeed = Math.random() * 2 + 2;
-                    
-                    const animate = () => {
-                        y += fallSpeed;  
-                        rose.style.top = y + 'px';
-                        
-                        if(y < window.innerHeight) {
-                            requestAnimationFrame(animate);
-                        } else {
-                            rose.remove();
-                        }
-                    };
-                    
-                    animate();
-                }, i * 100);
-            }
-        }
-
         // Auto-trigger fireworks on load after delay
         setTimeout(() => {
             createFireworks();
